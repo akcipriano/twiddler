@@ -5,51 +5,47 @@
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
     <title> Twiddler </title>
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Niramit:300,500" rel="stylesheet">
+    <link rel="stylesheet" type= "text/css" href="style.css">
   </head>
   
-  <body>
-
-     <!---This button will push new tweeds to the page-->
+  <header>
+      <!---This button will push new tweeds to the page-->
     <h1> Twiddler </h1>
     <p class="new-tweeds">
       <button>Click for New Tweeds!</button>
     </p>
+  </header>
 
+  <body>
 
     <script>
       
       //Loads initial tweeds on the page
       $(document).ready(function(){
+        
         var $body = $('body');
 
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          $tweet.html('@' + tweet.user + ': ' + tweet.message + "<br/>" + tweet.created_at.toLocaleTimeString());
           $tweet.appendTo('body');
           index -= 1;
         }
 
-      //Button triggers new tweeds to be added after it
-      $("button").click(function(){
-        var index = 0;
-        while(index < streams.home.length){
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.insertAfter(".new-tweeds");
-          index += 1;
-        }
-      });
-
-
-
-        
-
-
-
+        //Button triggers new tweeds to be added after it
+        $("button").click(function(){
+          var index = 0;
+          while(index < streams.home.length){
+            var tweet = streams.home[index];
+            var $tweet = $('<div></div>');
+            $tweet.html('@' + tweet.user + ': ' + tweet.message + "<br/>" + tweet.created_at.toLocaleTimeString());
+            $tweet.insertAfter(".new-tweeds");
+            index += 1;
+          }
+        });
       });
 
     
