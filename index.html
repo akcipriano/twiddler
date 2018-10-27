@@ -10,11 +10,16 @@
   </head>
   
   <header>
-      <!---This button will push new tweeds to the page-->
-    <h1> Twiddler </h1>
+      
+    <h1> <img src="logo.png" alt="Twiddler"> Twiddler</h1>
+
+
+    <!---This button will push new tweeds to the page-->
     <p class="new-tweeds">
       <button>Click for New Tweeds!</button>
     </p>
+    <br>
+  
   </header>
 
   <body>
@@ -29,24 +34,87 @@
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.html('@' + tweet.user + ': ' + tweet.message + "<br/>" + tweet.created_at.toLocaleTimeString());
+          var $tweet = $('<div class="tweed"></div>');
+          $tweet.html('@<b>' + tweet.user + '</b>: ' + tweet.message + "<br/>" + "<div class='time'>" + tweet.created_at.toLocaleTimeString() + "</div>");
           $tweet.appendTo('body');
           index -= 1;
         }
 
-        //Button triggers new tweeds to be added after it
-        $("button").click(function(){
+        //Button triggers new tweeds to be added on the page
+        $("body").on("click", "button", function(){
           var index = 0;
           while(index < streams.home.length){
             var tweet = streams.home[index];
-            var $tweet = $('<div></div>');
-            $tweet.html('@' + tweet.user + ': ' + tweet.message + "<br/>" + tweet.created_at.toLocaleTimeString());
+            var $tweet = $('<div class="tweed"></div>');
+            $tweet.html('@<b>' + tweet.user + '</b>: ' + tweet.message + "<br/>" + "<div class='time'>" + tweet.created_at.toLocaleTimeString() + "</div>");
             $tweet.insertAfter(".new-tweeds");
             index += 1;
           }
         });
-      });
+
+        //Clicking on username will show that user's tweeds
+        $("body").on("click", "div:contains(shawndrost)", function(){
+          
+          $('body').html('<p><button class="home">Home</button></p><br>');
+
+
+          
+          for (var i = 0; i < streams.users.shawndrost.length; i++){
+            var message = streams.users.shawndrost[i].message;
+            var $userTweeds = $('<div class="userTweeds"></div>');
+            $userTweeds.html('@<b>shawndrost</b>: ' + message + "<br/>" + "<div class='time'>" + tweet.created_at.toLocaleTimeString() + "</div>");
+            $userTweeds.appendTo("body");
+          }
+         });
+        
+        //Clicking on username will show that user's tweeds
+        $("body").on("click", "div:contains(douglascalhoun)", function(){
+          
+          $('body').html('<p><button class="home">Home</button></p><br>');
+          
+          for (var i = 0; i < streams.users.douglascalhoun.length; i++){
+            var message = streams.users.douglascalhoun[i].message;
+            var $userTweeds = $('<div class="userTweeds"></div>');
+            $userTweeds.html('@<b>douglascalhoun</b>: ' + message + "<br/>" + "<div class='time'>" + tweet.created_at.toLocaleTimeString() + "</div>");
+            $userTweeds.appendTo("body");
+          }
+         });
+        
+        //Clicking on username will show that user's tweeds
+        $("body").on("click", "div:contains(mracus)", function(){
+          
+          $('body').html('<p><button class="home">Home</button></p><br>');
+          
+          for (var i = 0; i < streams.users.mracus.length; i++){
+            var message = streams.users.mracus[i].message;
+            var $userTweeds = $('<div class="userTweeds"></div>');
+            $userTweeds.html('@<b>mracus</b>: ' + message + "<br/>" + "<div class='time'>" + tweet.created_at.toLocaleTimeString() + "</div>");
+            $userTweeds.appendTo("body");
+          }
+         }); 
+        
+        //Clicking on username will show that user's tweeds
+        $("body").on("click", "div:contains(sharksforcheap)", function(){
+          
+          $('body').html('<p><button class="home">Home</button></p><br>');
+          
+          for (var i = 0; i < streams.users.sharksforcheap.length; i++){
+            var message = streams.users.sharksforcheap[i].message;
+            var $userTweeds = $('<div class="userTweeds"></div>');
+            $userTweeds.html('@<b>sharksforcheap</b>: ' + message + "<br/>" + "<div class='time'>" + tweet.created_at.toLocaleTimeString() + "</div>");
+            $userTweeds.appendTo("body");
+          }
+         });
+
+          
+        //Button to return to the home screen (on page showing specific user's tweeds)
+        $("body").on("click", ".home", function(){ 
+          setTimeout(function(){
+            window.location.reload();
+          });       
+        });
+   
+    });
 
     
     </script>
