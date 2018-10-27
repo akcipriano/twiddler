@@ -1,0 +1,56 @@
+
+h1 {
+	font-family: Niramit;
+	font-size: 50px;
+	text-align: center;
+	text-decoration: underline overline dotted black;
+}
+
+img {
+	max-width: 45px
+}
+
+body {
+	font-family: Niramit;
+	font-weight: 300;
+	font-size: 15px;
+}
+
+.time {
+	font-size: 85%;
+	font-weight: 100;
+}
+
+body div {
+	max-width: 550px;
+	margin: auto;
+}
+
+p {
+	text-align: center;
+}
+
+button {
+    background-color: white;
+    color: black;
+    font-size: 12px;
+    border: 3px solid #c2c2d6; 
+}
+
+button:hover {
+    background-color: #c2c2d6; 
+    color: black;
+}
+
+
+div.tweed:nth-child(odd),
+div.userTweeds:nth-child(odd){
+	background-color: #e6e6ff;
+}
+
+div.tweed:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+
